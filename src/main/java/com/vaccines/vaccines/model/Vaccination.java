@@ -1,4 +1,5 @@
 package com.vaccines.vaccines.model;
+
 import java.time.LocalDate;
 
 public class Vaccination {

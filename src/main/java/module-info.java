@@ -5,5 +5,4 @@ module com.vaccines.vaccines {
 
 
     opens com.vaccines.vaccines.controller to javafx.fxml;
-    exports com.vaccines.vaccines;
 }
