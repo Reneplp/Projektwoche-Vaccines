@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.vaccines.vaccines.controller.ProfileTypeController"
+      alignment="CENTER"
+      spacing="20"
+      style="-fx-padding: 40;">
+
+    <ImageView fitWidth="300" preserveRatio="true">
+        <image>
+            <Image url="@Logo_transparent.png"/>
+        </image>
+    </ImageView>
+
+    <Label fx:id="greetingLabel" text="Hallo! Für wen möchtest du ein Profil anlegen?"/>
+
+    <fx:define>
+        <ToggleGroup fx:id="profileTypeGroup"/>
+    </fx:define>
+
+    <VBox alignment="CENTER_LEFT" spacing="10" maxWidth="200">
+        <RadioButton text="Für mich (Erwachsen)" toggleGroup="$profileTypeGroup" userData="MENSCH_ERWACHSENER"/>
+        <RadioButton text="Kind" toggleGroup="$profileTypeGroup" userData="MENSCH_KIND"/>
+        <RadioButton text="Hund" toggleGroup="$profileTypeGroup" userData="HUND"/>
+        <RadioButton text="Katze" toggleGroup="$profileTypeGroup" userData="KATZE"/>
+    </VBox>
+
+    <HBox alignment="CENTER" spacing="20">
+        <Button text="Zurück" onAction="#handleZurueck"/>
+        <Button text="Weiter" onAction="#handleWeiter"/>
+    </HBox>
+</VBox>

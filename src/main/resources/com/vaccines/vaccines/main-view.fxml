@@ -13,14 +13,14 @@
       spacing="20"
       style="-fx-padding: 40;">
 
-    <ImageView fitWidth="300" preserveRatio="true">
+    <ImageView fitWidth="600" preserveRatio="true">
         <image>
-            <Image url="@/com/vaccines/vaccines/Logo_transparent.png"/>
+            <Image url="@Logo_transparent.png"/>
         </image>
     </ImageView>
 
     <Label text="Wie heißt du?"/>
-    <TextField fx:id="nameField" promptText="Dein Name..."/>
+    <TextField fx:id="nameField" promptText="Dein Name..." onAction="#handleWeiter"/>
     <Button text="Weiter" onAction="#handleWeiter"/>
 
 </VBox>
