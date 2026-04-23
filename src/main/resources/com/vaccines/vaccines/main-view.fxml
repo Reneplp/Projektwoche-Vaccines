@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.vaccines.vaccines.controller.MainController"
+      alignment="CENTER"
+      spacing="20"
+      style="-fx-padding: 40;">
+
+    <ImageView fitWidth="300" preserveRatio="true">
+        <image>
+            <Image url="@/com/vaccines/vaccines/Logo_transparent.png"/>
+        </image>
+    </ImageView>
+
+    <Label text="Wie heißt du?"/>
+    <TextField fx:id="nameField" promptText="Dein Name..."/>
+    <Button text="Weiter" onAction="#handleWeiter"/>
+
+</VBox>
