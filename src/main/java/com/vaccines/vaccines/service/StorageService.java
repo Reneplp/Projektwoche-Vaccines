@@ -3,23 +3,30 @@ package com.vaccines.vaccines.service;
 import com.vaccines.vaccines.model.Profile;
 import com.google.gson.Gson;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.io.FileReader;
-import java.io.BufferedReader;
 
 import java.util.ArrayList;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializer;
+import com.google.gson.JsonPrimitive;
+import java.time.LocalDate;
 
 public class StorageService {
     private static final String FILE_PATH = "profiles.json";
 
 
     public void saveProfiles(ArrayList<Profile> profiles) {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(LocalDate.class, (JsonSerializer<LocalDate>)
+                        (date, type, context) -> new JsonPrimitive(date.toString()))
+                .registerTypeAdapter(LocalDate.class, (JsonDeserializer<LocalDate>)
+                        (element, type, context) -> LocalDate.parse(element.getAsString()))
+                .create();
         String json = gson.toJson(profiles);
 
         try {
@@ -33,6 +40,11 @@ public class StorageService {
 
     public ArrayList<Profile> loadProfiles() {
         try {
+
+            File file = new File(FILE_PATH);
+            if (!file.exists()) {
+                return new ArrayList<>();
+            }
             BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
             StringBuilder sb = new StringBuilder();
             String line;
@@ -42,7 +54,12 @@ public class StorageService {
             reader.close();
             String json = sb.toString();
 
-            Gson gson = new Gson();
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(LocalDate.class, (JsonSerializer<LocalDate>)
+                            (date, type, context) -> new JsonPrimitive(date.toString()))
+                    .registerTypeAdapter(LocalDate.class, (JsonDeserializer<LocalDate>)
+                            (element, type, context) -> LocalDate.parse(element.getAsString()))
+                    .create();
             Type type = new TypeToken<ArrayList<Profile>>() {
             }.getType();
             return gson.fromJson(json, type);

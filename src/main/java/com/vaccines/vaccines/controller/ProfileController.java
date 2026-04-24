@@ -1,23 +1,25 @@
 package com.vaccines.vaccines.controller;
 
+import com.vaccines.vaccines.model.Profile;
+import com.vaccines.vaccines.model.Vaccination;
+import com.vaccines.vaccines.service.StorageService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
-import javafx.scene.control.ComboBox;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import com.vaccines.vaccines.service.VaccineService;
 import com.vaccines.vaccines.service.VaccineRegistry;
-
+import com.vaccines.vaccines.model.ProfileType;
 
 public class ProfileController {
 
@@ -34,6 +36,10 @@ public class ProfileController {
 
     @FXML
     private DatePicker birthDatePicker;
+
+    @FXML
+    private TextField subjectNameField;
+
 
     @FXML
     private void handleAddVaccination() {
@@ -54,15 +60,10 @@ public class ProfileController {
         vaccinationsBox.getChildren().add(row);
     }
 
-    @FXML
-    private void handleSpeichern() {
-        // TODO
-    }
-
     private String userName;
     private String profileType;
 
-    // Autocomplete Combobox von KI generiert:
+    // Autocomplete Combobox von KI generiert: TODO -> Muss geändert werden auf TextField mit ListView, Space bug
     private void setupAutocomplete(ComboBox<String> comboBox, List<String> allItems) {
         comboBox.setEditable(true);
         comboBox.getItems().addAll(allItems);
@@ -102,18 +103,27 @@ public class ProfileController {
                 comboBox.getItems().setAll(allItems);
             }
         });
+        comboBox.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                javafx.application.Platform.runLater(() -> {
+                    comboBox.getEditor().positionCaret(comboBox.getEditor().getText().length());
+                    comboBox.getEditor().selectAll();
+                    comboBox.getEditor().deselect();
+                });
+            }
+        });
     }
 
     public void setProfileType(String profileType) {
         this.profileType = profileType;
 
         switch (profileType) {
-            case "MENSCH_ERWACHSENER" -> {
+            case "ERWACHSENER" -> {
                 greetingLabel.setText("Alles klar " + userName + "! Bitte gib deine Daten ein.");
                 extraFieldsBox.setVisible(false);
                 extraFieldsBox.setManaged(false);
             }
-            case "MENSCH_KIND" -> greetingLabel.setText("Alles klar " + userName + "! Bitte gib die Daten deines Kindes ein.");
+            case "KIND" -> greetingLabel.setText("Alles klar " + userName + "! Bitte gib die Daten deines Kindes ein.");
 
             case "HUND" -> greetingLabel.setText("Alles klar " + userName + "! Bitte gib die Daten deines Hundes ein.");
             case "KATZE" -> greetingLabel.setText("Alles klar " + userName + "! Bitte gib die Daten deiner Katze ein.");
@@ -145,5 +155,49 @@ public class ProfileController {
 
     public void setName(String name) {
         this.userName = name;
+    }
+    @FXML
+    private void handleSpeichern() {
+        String nameForProfile = "";
+        LocalDate dateOfBirth = birthDatePicker.getValue();
+
+        if (profileType.equals("ERWACHSENER")) {
+            nameForProfile = userName;
+        }
+        else {
+            nameForProfile = subjectNameField.getText();
+            if (nameForProfile.isBlank()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Kein Name eingegeben");
+                alert.setHeaderText(null);
+                alert.setContentText("Bitte sag uns zuerst den Namen, dann geht's weiter!");
+                alert.showAndWait();
+                return;
+            }
+        }
+
+        Profile profile = new Profile(ProfileType.valueOf(profileType), nameForProfile);
+        profile.setDateOfBirth(dateOfBirth);
+
+        for (Node node : vaccinationsBox.getChildren()) {
+            HBox row = (HBox) node;
+            ComboBox<String> tradeNameDropdown = (ComboBox<String>) row.getChildren().get(0);
+            String tradeName = tradeNameDropdown.getValue();
+            DatePicker lastVaccination = (DatePicker) row.getChildren().get(1);
+
+            VaccineRegistry.VaccineEntry allData = VaccineRegistry.findByTradeName(tradeName);
+            if (allData == null) continue;
+            String diseaseName = allData.getDiseaseName();
+            String protectionDuration = allData.getProtectionDuration();
+            int booster = allData.getBoosterAfterMonths();
+
+
+            Vaccination v = new Vaccination(tradeName,diseaseName, protectionDuration, booster, lastVaccination.getValue());
+            profile.getVaccines().add(v);
+        }
+        StorageService storageService = new StorageService();
+        ArrayList<Profile> profiles = storageService.loadProfiles();
+        profiles.add(profile);
+        storageService.saveProfiles(profiles);
     }
 }

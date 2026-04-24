@@ -5,5 +5,6 @@ module com.vaccines.vaccines {
 
 
     opens com.vaccines.vaccines.controller to javafx.fxml;
+    opens com.vaccines.vaccines.model to com.google.gson;
     exports com.vaccines.vaccines;
 }

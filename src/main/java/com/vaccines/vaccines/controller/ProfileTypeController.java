@@ -1,11 +1,7 @@
 package com.vaccines.vaccines.controller;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;

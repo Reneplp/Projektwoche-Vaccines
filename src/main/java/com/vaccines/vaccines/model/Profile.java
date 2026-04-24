@@ -1,10 +1,12 @@
 package com.vaccines.vaccines.model;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Profile {
     private ProfileType type;
     private String name;
     private ArrayList<Vaccination> vaccines;
+    private LocalDate dateOfBirth;
 
     public Profile(ProfileType type, String name){
         this.type = type;
@@ -28,5 +30,11 @@ public class Profile {
     }
     public void setVaccines(ArrayList<Vaccination> vaccine){
         this.vaccines = vaccine;
+    }
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

@@ -28,8 +28,8 @@
     </fx:define>
 
     <VBox alignment="CENTER_LEFT" spacing="10" maxWidth="200">
-        <RadioButton text="Für mich (Erwachsen)" toggleGroup="$profileTypeGroup" userData="MENSCH_ERWACHSENER"/>
-        <RadioButton text="Kind" toggleGroup="$profileTypeGroup" userData="MENSCH_KIND"/>
+        <RadioButton text="Für mich (Erwachsen)" toggleGroup="$profileTypeGroup" userData="ERWACHSENER"/>
+        <RadioButton text="Kind" toggleGroup="$profileTypeGroup" userData="KIND"/>
         <RadioButton text="Hund" toggleGroup="$profileTypeGroup" userData="HUND"/>
         <RadioButton text="Katze" toggleGroup="$profileTypeGroup" userData="KATZE"/>
     </VBox>

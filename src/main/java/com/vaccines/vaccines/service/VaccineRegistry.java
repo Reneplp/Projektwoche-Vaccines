@@ -24,8 +24,8 @@ public class VaccineRegistry {
     // =========================================================================
 
     public enum ProfileType {
-        MENSCH_ERWACHSENER,
-        MENSCH_KIND,
+        ERWACHSENER,
+        KIND,
         HUND,
         KATZE
     }
@@ -84,12 +84,12 @@ public class VaccineRegistry {
         List<VaccineEntry> v = new ArrayList<>();
 
         // =====================================================================
-        // MENSCH - ERWACHSENE  (STIKO 2026)
+        // ERWACHSENE  (STIKO 2026)
         // =====================================================================
 
         v.add(new VaccineEntry(
             "Tetanus + Diphtherie (Td)",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList("Td-pur", "Revaxis", "diTeBooster", "Ditanrix"),
             "ca. 10 Jahre", 120, "Standard",
             "Reine Td-Auffrischung nach einmaliger Tdap-Gabe. Alle 10 Jahre."
@@ -97,7 +97,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Tetanus + Diphtherie + Pertussis (Tdap)",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList("Boostrix", "Covaxis"),
             "ca. 10 Jahre", 120, "Standard",
             "Einmalige Pertussis-Auffrischung bei naechstfaelliger Td-Impfung. " +
@@ -106,7 +106,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Tetanus + Diphtherie + Pertussis + Polio (Tdap-IPV)",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList("Boostrix Polio", "Repevax"),
             "ca. 10 Jahre", 120, "Standard",
             "Kombiniert Tdap mit Polio-Komponente. Sinnvoll wenn Polio-Auffrischung indiziert."
@@ -114,7 +114,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "FSME (Fruehsommer-Meningoenzephalitis)",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList(
                 "Encepur Erwachsene",    // Bavarian Nordic, ab 12 J.
                 "FSME-IMMUN Erwachsene", // Pfizer/Valneva, ab 16 J.
@@ -128,7 +128,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Influenza (Grippe)",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList(
                 "Influvac Tetra",
                 "Fluarix Tetra",
@@ -142,7 +142,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "COVID-19",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList(
                 "Comirnaty",                    // BioNTech/Pfizer - mRNA
                 "Spikevax",                     // Moderna - mRNA
@@ -160,7 +160,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Herpes Zoster (Guertelrose)",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList("Shingrix"),
             "Langfristig (>10 Jahre)", 0, "Standard (ab 60 J.) / Indikation (ab 18 J.)",
             "2 Dosen im Abstand von 2-6 Monaten. Kein weiterer Booster. " +
@@ -169,7 +169,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Pneumokokken",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList(
                 "Prevenar 20",   // Pfizer - PCV20, empfohlen ab 60 J.
                 "Apexxnar",      // Pfizer - PCV20, Alternativname
@@ -181,7 +181,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Masern/Mumps/Roeteln (MMR) - Nachholimpfung Erwachsene",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList("Priorix", "M-M-RVaxPro"),
             "Lebenslang (nach 2 Impfungen)", 0, "Nachholimpfung",
             "Nach 1970 geborene Erwachsene >= 18 J.: einmalige Impfung wenn Impfstatus unklar " +
@@ -190,7 +190,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Hepatitis B",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList(
                 "Engerix-B",
                 "Engerix-B Erwachsene",
@@ -207,7 +207,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Hepatitis A",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList(
                 "Havrix 1440",   // GSK Erwachsenendosis
                 "Vaqta 50",      // MSD Erwachsenendosis
@@ -220,7 +220,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Meningokokken ACWY",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList("Menveo", "Nimenrix", "MenQuadfi"),
             "ca. 5 Jahre", 0, "Indikation",
             "Fuer Risikogruppen, Reisende, Erstimmatrikulierte."
@@ -228,7 +228,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Meningokokken B",
-            ProfileType.MENSCH_ERWACHSENER,
+            ProfileType.ERWACHSENER,
             Arrays.asList("Bexsero", "Trumenba"),
             "Grundimmunisierung", 0, "Indikation",
             "Fuer Risikogruppen (Asplenie, Komplementdefekte). Nicht allgemein empfohlen."
@@ -240,7 +240,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Sechsfachimpfung: Tetanus, Diphtherie, Pertussis, Polio, Hib, Hepatitis B",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList(
                 "Hexyon",        // Sanofi
                 "Infanrix hexa", // GSK
@@ -252,7 +252,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Fuenffachimpfung: Tetanus, Diphtherie, Pertussis, Polio, Hib",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList(
                 "Infanrix-IPV+Hib", // GSK
                 "Pentavac",         // Sanofi
@@ -264,7 +264,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Tetanus + Diphtherie + Pertussis Auffrischung (Kind/Jugend)",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList(
                 "Boostrix",      // Tdap (GSK)
                 "Infanrix",      // DTaP (juengere Kinder, GSK)
@@ -278,7 +278,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Masern, Mumps, Roeteln (MMR)",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList("Priorix", "M-M-RVaxPro"),
             "Lebenslang (nach 2 Dosen)", 0, "Standard",
             "1. Dosis: 11-14 Monate. 2. Dosis: 15-23 Monate."
@@ -286,7 +286,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Masern, Mumps, Roeteln, Varizellen (MMRV)",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList("Priorix-Tetra", "ProQuad"),
             "Lebenslang (nach 2 Dosen)", 0, "Standard",
             "Kombiniert MMR und Windpocken. Nur als 2. MMR-Dosis ab 15 Monaten empfohlen."
@@ -294,7 +294,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Varizellen (Windpocken)",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList("Varilrix", "Varivax"),
             "Langfristig (nach 2 Dosen)", 0, "Standard",
             "2 Dosen: 11-14 und 15-23 Monate. Alternativ als MMRV-Kombination."
@@ -302,7 +302,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Pneumokokken (Kinder)",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList(
                 "Prevenar 13",  // aeltere Formulierung, noch in Impfpaessen
                 "Prevenar 20",  // aktuell empfohlen
@@ -314,7 +314,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Meningokokken B (Kinder)",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList("Bexsero", "Trumenba"),
             "Grundimmunisierung", 0, "Standard",
             "3-Dosen-Schema: 2, 4, 12 Monate. Bexsero bevorzugt."
@@ -322,7 +322,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Meningokokken ACWY (Kinder/Jugendliche)",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList("Menveo", "Nimenrix", "MenQuadfi"),
             "ca. 5 Jahre", 0, "Standard (neu ab STIKO 2026)",
             "Standardimpfung fuer alle Kinder 12-14 Jahre. Neu in STIKO 2026."
@@ -330,7 +330,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "HPV (Humane Papillomviren)",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList(
                 "Gardasil 9",  // MSD - 9-valent (empfohlen)
                 "Cervarix"     // GSK - bivalent (kaum noch verwendet)
@@ -342,7 +342,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Rotaviren",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList(
                 "Rotarix", // GSK - 2 Dosen Schluckimpfung
                 "RotaTeq"  // MSD - 3 Dosen Schluckimpfung
@@ -354,7 +354,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "FSME (Kinder)",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList(
                 "FSME-IMMUN Junior",  // Pfizer/Valneva - ab 1 Jahr
                 "Encepur Kinder"      // Bavarian Nordic - ab 1 Jahr
@@ -365,7 +365,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Influenza (Kinder)",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList(
                 "Fluenz Tetra",   // AstraZeneca - Nasenspray Lebendimpfstoff (2-17 J.)
                 "Influvac Tetra",
@@ -379,7 +379,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Hepatitis A (Kinder)",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList("Havrix 720", "Vaqta 25", "Twinrix Kinder"),
             "20+ Jahre (nach 2 Dosen)", 0, "Indikation / Reise",
             "Ab 1 Jahr. 2 Dosen (0 und 6-12 Monate)."
@@ -387,7 +387,7 @@ public class VaccineRegistry {
 
         v.add(new VaccineEntry(
             "Hepatitis B (Kinder, separat)",
-            ProfileType.MENSCH_KIND,
+            ProfileType.KIND,
             Arrays.asList("Engerix-B Kinder", "HBVAXPRO 5"),
             "Langfristig", 0, "Standard (meist Teil 6-fach)",
             "Nur wenn nicht ueber Sechsfachimpfung abgedeckt. Selten als Einzelimpfstoff."
