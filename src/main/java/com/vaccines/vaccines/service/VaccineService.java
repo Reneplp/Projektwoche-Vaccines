@@ -1,6 +1,6 @@
 package com.vaccines.vaccines.service;
 
-import com.vaccines.vaccines.service.VaccineRegistry.ProfileType;
+import com.vaccines.vaccines.model.ProfileType;
 import com.vaccines.vaccines.service.VaccineRegistry.VaccineEntry;
 import java.util.List;
 

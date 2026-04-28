@@ -129,7 +129,7 @@ public class ProfileController {
             case "KATZE" -> greetingLabel.setText("Alles klar " + userName + "! Bitte gib die Daten deiner Katze ein.");
         }
         VaccineService vaccineService = new VaccineService();
-        VaccineRegistry.ProfileType type = VaccineRegistry.ProfileType.valueOf(profileType);
+        ProfileType type = ProfileType.valueOf(profileType);
         List<String> tradeNames = vaccineService.getTradeNamesForProfile(type);
         this.currentTradeNames = tradeNames;
         handleAddVaccination();

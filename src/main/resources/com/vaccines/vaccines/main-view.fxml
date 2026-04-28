@@ -22,6 +22,6 @@
     <Label text="Wie heißt du?"/>
     <TextField fx:id="nameField" promptText="Dein Name..." onAction="#handleWeiter"/>
     <Button text="Weiter" onAction="#handleWeiter"/>
-    <Button text="Bestehendes Profil laden" onAction="#handleProfilLaden"/>
+    <Button text="Bestehendes Profil bearbeiten" onAction="#handleProfilLaden"/>
 
 </VBox>

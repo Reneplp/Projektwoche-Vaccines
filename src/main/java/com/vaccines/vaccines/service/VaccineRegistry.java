@@ -1,6 +1,7 @@
 package com.vaccines.vaccines.service;
 import java.util.*;
 import java.util.stream.Collectors;
+import com.vaccines.vaccines.model.ProfileType;
 
 
 /**
@@ -23,12 +24,6 @@ public class VaccineRegistry {
     // Datenmodell
     // =========================================================================
 
-    public enum ProfileType {
-        ERWACHSENER,
-        KIND,
-        HUND,
-        KATZE
-    }
 
     public static class VaccineEntry {
         private final String diseaseName;
@@ -263,7 +258,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "Tetanus + Diphtherie + Pertussis Auffrischung (Kind/Jugend)",
+            "Tetanus + Diphtherie + Pertussis Auffrischung",
             ProfileType.KIND,
             Arrays.asList(
                 "Boostrix",      // Tdap (GSK)
@@ -301,7 +296,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "Pneumokokken (Kinder)",
+            "Pneumokokken",
             ProfileType.KIND,
             Arrays.asList(
                 "Prevenar 13",  // aeltere Formulierung, noch in Impfpaessen
@@ -313,7 +308,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "Meningokokken B (Kinder)",
+            "Meningokokken B",
             ProfileType.KIND,
             Arrays.asList("Bexsero", "Trumenba"),
             "Grundimmunisierung", 0, "Standard",
@@ -321,7 +316,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "Meningokokken ACWY (Kinder/Jugendliche)",
+            "Meningokokken ACWY",
             ProfileType.KIND,
             Arrays.asList("Menveo", "Nimenrix", "MenQuadfi"),
             "ca. 5 Jahre", 0, "Standard (neu ab STIKO 2026)",
@@ -353,7 +348,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "FSME (Kinder)",
+            "FSME",
             ProfileType.KIND,
             Arrays.asList(
                 "FSME-IMMUN Junior",  // Pfizer/Valneva - ab 1 Jahr
@@ -364,7 +359,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "Influenza (Kinder)",
+            "Influenza",
             ProfileType.KIND,
             Arrays.asList(
                 "Fluenz Tetra",   // AstraZeneca - Nasenspray Lebendimpfstoff (2-17 J.)
@@ -378,7 +373,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "Hepatitis A (Kinder)",
+            "Hepatitis A",
             ProfileType.KIND,
             Arrays.asList("Havrix 720", "Vaqta 25", "Twinrix Kinder"),
             "20+ Jahre (nach 2 Dosen)", 0, "Indikation / Reise",
@@ -386,7 +381,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "Hepatitis B (Kinder, separat)",
+            "Hepatitis B",
             ProfileType.KIND,
             Arrays.asList("Engerix-B Kinder", "HBVAXPRO 5"),
             "Langfristig", 0, "Standard (meist Teil 6-fach)",
@@ -502,7 +497,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "Lyme-Borreliose - Hund",
+            "Lyme-Borreliose",
             ProfileType.HUND,
             Arrays.asList(
                 "Nobivac Lyme",      // MSD
@@ -606,7 +601,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "Chlamydiose - Katze",
+            "Chlamydiose",
             ProfileType.KATZE,
             Arrays.asList(
                 "Purevax RCPCh",      // Boehringer
@@ -619,7 +614,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "Zwingerhusten - Katze (Bordetella bronchiseptica)",
+            "Zwingerhusten (Bordetella bronchiseptica)",
             ProfileType.KATZE,
             Arrays.asList("Nobivac Bb"),  // MSD - intranasal, auch fuer Katzen
             "1 Jahr", 12, "Non-Core (Risikoimpfung)",
@@ -696,33 +691,5 @@ public class VaccineRegistry {
                 .distinct()
                 .sorted(String.CASE_INSENSITIVE_ORDER)
                 .collect(Collectors.toList());
-    }
-
-    // =========================================================================
-    // Demo / Testausgabe
-    // =========================================================================
-
-    public static void main(String[] args) {
-        System.out.println("=== Lookup via Handelsname ===");
-        String[] tests = {
-            "Nobivac T", "Boostrix", "Comirnaty", "Encepur Erwachsene",
-            "Purevax RCP", "Versican Plus L4", "Nobivac L4", "Nobivac Lepto",
-            "Repevax", "Priorix", "Shingrix", "Gardasil 9", "Fluenz Tetra",
-            "FSME-IMMUN Junior", "Rabisin", "UnbekannterImpfstoff"
-        };
-        for (String name : tests) {
-            VaccineEntry e = findByTradeName(name);
-            System.out.printf("%-35s -> %s%n", name,
-                    e != null ? e.getDiseaseName() + " [" + e.getProfile() + "]"
-                              : "NICHT GEFUNDEN (Fallback)");
-        }
-
-        System.out.println("\n=== Hund: alle Impfungen ===");
-        for (VaccineEntry e : getVaccinesForProfile(ProfileType.HUND)) {
-            System.out.printf("  %-45s [%s]%n", e.getDiseaseName(), e.getCategory());
-        }
-
-        System.out.printf("%nEintraege gesamt: %d%n", ALL_VACCINES.size());
-        System.out.printf("Handelsnamen gesamt: %d%n", getAllTradeNames().size());
     }
 }
