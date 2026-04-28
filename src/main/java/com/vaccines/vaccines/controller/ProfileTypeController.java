@@ -28,7 +28,7 @@ private String userName;
             Stage stage = (Stage) greetingLabel.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            e.printStackTrace(); // TODO
+            e.printStackTrace();
         }
     }
     @FXML
@@ -61,8 +61,7 @@ private String userName;
             Stage stage = (Stage) greetingLabel.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-           // System.out.println("Fehler beim Laden des nächsten Screens");
-            e.printStackTrace(); // TODO
+            e.printStackTrace();
         }
     }
 }

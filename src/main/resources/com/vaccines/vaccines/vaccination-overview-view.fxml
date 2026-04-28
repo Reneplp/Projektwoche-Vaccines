@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 
+<?import javafx.scene.text.Text?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.vaccines.vaccines.controller.VaccinationOverviewController"
@@ -27,7 +28,11 @@
             <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
         </columns>
     </TableView>
-
+    <Text
+            text="⚠ Hinweis: Diese App ersetzt keine ärztliche Beratung. Alle Angaben sind unverbindliche Empfehlungen basierend auf STIKO/StIKo Vet Richtlinien. Bitte konsultiere vor jeder Impfentscheidung einen entsprechenden Arzt."
+            style="-fx-font-size: 10px; -fx-fill: gray;"
+            wrappingWidth="600"
+            textAlignment="CENTER"/>
     <Button text="Zurück" onAction="#handleZurueck"/>
 
 </VBox>

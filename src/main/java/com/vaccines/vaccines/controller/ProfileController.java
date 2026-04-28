@@ -63,7 +63,7 @@ public class ProfileController {
     private String userName;
     private String profileType;
 
-    // Autocomplete Combobox von KI generiert: TODO -> Muss geändert werden auf TextField mit ListView, Space bug
+    // Autocomplete Combobox von KI generiert:
     private void setupAutocomplete(ComboBox<String> comboBox, List<String> allItems) {
         comboBox.setEditable(true);
         comboBox.getItems().addAll(allItems);
@@ -149,7 +149,7 @@ public class ProfileController {
             Stage stage = (Stage) greetingLabel.getScene().getWindow();
             stage.setScene(scene);
         } catch (IOException e) {
-            e.printStackTrace(); // TODO
+            e.printStackTrace();
         }
     }
 
@@ -199,5 +199,20 @@ public class ProfileController {
         ArrayList<Profile> profiles = storageService.loadProfiles();
         profiles.add(profile);
         storageService.saveProfiles(profiles);
+
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/vaccines/vaccines/vaccination-overview-view.fxml")
+            );
+            Scene scene = new Scene(loader.load(), 800, 600);
+
+            VaccinationOverviewController controller = loader.getController();
+            controller.setProfile(profile);
+
+            Stage stage = (Stage) greetingLabel.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
