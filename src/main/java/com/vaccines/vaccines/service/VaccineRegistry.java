@@ -481,7 +481,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "Tollwut - Hund",
+            "Tollwut",
             ProfileType.HUND,
             Arrays.asList(
                 "Nobivac T",              // MSD - Monoimpfstoff (haeufig im Impfpass)
@@ -575,7 +575,7 @@ public class VaccineRegistry {
         ));
 
         v.add(new VaccineEntry(
-            "Tollwut - Katze",
+            "Tollwut",
             ProfileType.KATZE,
             Arrays.asList(
                 "Purevax Rabies",            // Boehringer - adjuvansfrei (bevorzugt)

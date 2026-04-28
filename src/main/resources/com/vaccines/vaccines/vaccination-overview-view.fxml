@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.vaccines.vaccines.controller.VaccinationOverviewController"
+      alignment="CENTER"
+      spacing="20"
+      style="-fx-padding: 40;">
+
+    <ImageView fitWidth="150" preserveRatio="true">
+        <image>
+            <Image url="@Logo_transparent.png"/>
+        </image>
+    </ImageView>
+
+    <Label fx:id="profileNameLabel" text="Impfübersicht"/>
+    <TableView fx:id="vaccinationTable" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="nameColumn" text="Impfstoff" prefWidth="200"/>
+            <TableColumn fx:id="diseaseColumn" text="Krankheit" prefWidth="200"/>
+            <TableColumn fx:id="lastColumn" text="Letzte Impfung" prefWidth="150"/>
+            <TableColumn fx:id="nextColumn" text="Nächste fällig" prefWidth="150"/>
+            <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <Button text="Zurück" onAction="#handleZurueck"/>
+
+</VBox>

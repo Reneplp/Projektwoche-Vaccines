@@ -3,7 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 .kotlin
-
+profiles.json
 ### IntelliJ IDEA ###
 .idea/
 *.iws

@@ -44,4 +44,17 @@ public class MainController {
             System.out.println("Fehler beim Laden des nächsten Screens");
         }
     }
+    @FXML
+    private void handleProfilLaden() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/vaccines/vaccines/profile-list-view.fxml")
+            );
+            Scene scene = new Scene(loader.load(), 800, 600);
+            Stage stage = (Stage) nameField.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

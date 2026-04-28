@@ -22,10 +22,11 @@ public class StorageService {
 
     public void saveProfiles(ArrayList<Profile> profiles) {
         Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
                 .registerTypeAdapter(LocalDate.class, (JsonSerializer<LocalDate>)
-                        (date, type, context) -> new JsonPrimitive(date.toString()))
+                        (date, type, context) -> new JsonPrimitive(date.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"))))
                 .registerTypeAdapter(LocalDate.class, (JsonDeserializer<LocalDate>)
-                        (element, type, context) -> LocalDate.parse(element.getAsString()))
+                        (element, type, context) -> LocalDate.parse(element.getAsJsonPrimitive().getAsString(), java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy")))
                 .create();
         String json = gson.toJson(profiles);
 
@@ -56,9 +57,9 @@ public class StorageService {
 
             Gson gson = new GsonBuilder()
                     .registerTypeAdapter(LocalDate.class, (JsonSerializer<LocalDate>)
-                            (date, type, context) -> new JsonPrimitive(date.toString()))
+                            (date, type, context) -> new JsonPrimitive(date.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy"))))
                     .registerTypeAdapter(LocalDate.class, (JsonDeserializer<LocalDate>)
-                            (element, type, context) -> LocalDate.parse(element.getAsString()))
+                            (element, type, context) -> LocalDate.parse(element.getAsJsonPrimitive().getAsString(), java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy")))
                     .create();
             Type type = new TypeToken<ArrayList<Profile>>() {
             }.getType();
